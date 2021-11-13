@@ -61,7 +61,7 @@ public class Login {
 		frame.setBackground(Color.BLACK);
 		frame.setSize(400, 800);
 		frame.setResizable(false);
-		frame.setTitle("[user, mobile > " + com.hwrps.login.Login.class + "] interface");
+		frame.setTitle("mobile > ui.interface.a0");
 		frame.setLocationRelativeTo(null);
 		frame.setIconImage(ui_icon_icon.getImage());
 		

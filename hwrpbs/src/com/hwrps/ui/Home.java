@@ -27,7 +27,7 @@ public class Home {
 	static String log = "[LOG] ";
 	
 	
-	static int total_tokens = 0;
+	static int total_tokens = 5;
 	static int window_status = 0; //0 = frame ist unsichtbar, 1 = frame ist sichtbar
 	
 	
@@ -113,19 +113,19 @@ public class Home {
 		labels[1].setForeground(Color.BLACK);
 		
 		if (total_tokens > 1) { //für bessere ausgabe vom angezeigten text
-			labels[1].setText(total_tokens + " Tokens"); //if more than one token
+			labels[1].setText(total_tokens + " TKNs"); //if more than one token
 		} else {
 			if (total_tokens == 0) {
 				labels[1].setText("Keine Tokens"); //if 0 token or less
 			} else {
-				labels[1].setText(total_tokens + " Token"); //if one token
+				labels[1].setText(total_tokens + " TKN"); //if one token
 			}
 		}
 		
 		String total_tokens_string = String.valueOf(total_tokens); //int to string
-		if (total_tokens_string.length() > 5 || total_tokens < 0 || total_tokens_string.isEmpty()) { //if to much tokens (more than 99.999) or negative tokens or "null" tokens
-			System.err.println(err + "too much or too less tokens");
-			labels[1].setText("error");
+		if (total_tokens_string.length() > 7 || total_tokens < 0 || total_tokens_string.isEmpty()) { //if to much tokens (more than 99.999) or negative tokens or "null" tokens
+			System.err.println(err + "zu viele oder zu wenige tokens");
+			labels[1].setText("fehler");
 		}
 		
 		
@@ -138,7 +138,7 @@ public class Home {
 		frame.setBackground(Color.BLACK);
 		frame.setSize(400, 800);
 		frame.setResizable(false);
-		frame.setTitle("[user, mobile > " + com.hwrps.ui.Home.class + "] interface");
+		frame.setTitle("mobile > ui.interface.a1");
 		frame.setLocation(login_methods.getLocation()); //importiert die location (point) des login fensters
 		frame.setIconImage(ui_icon_icon.getImage());
 		
