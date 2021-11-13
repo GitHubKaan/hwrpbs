@@ -1,4 +1,4 @@
-package com.hwrps.login;
+package com.hwrpbs.ui.login;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,9 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.hwrps.main.Terminal;
-import com.hwrps.ui.Home;
-import com.hwrps.ui.Shop;
+import com.hwrpbs.main.Main;
+import com.hwrpbs.ui.menue.Home;
+import com.hwrpbs.ui.menue.Shop;
 import com.sun.jdi.Location;
 
 public class Login {
@@ -28,7 +28,7 @@ public class Login {
 	
 	static Point loc;
 	
-	Terminal terminal_methods = new Terminal(); //klassen methoden importieren
+	Main terminal_methods = new Main(); //klassen methoden importieren
 	Home user_class; //klassen abrufen
 	
 	JFrame frame = new JFrame();
@@ -39,7 +39,7 @@ public class Login {
 	
 	public Login() {
 		
-		System.out.println(stbl + com.hwrps.login.Login.class + " startet");
+		System.out.println(stbl + com.hwrpbs.ui.login.Login.class + " startet");
 		
 		//----------[INITIALISIERUNG]----------
 		for (int i = 0; i < panels.length; i++) {
@@ -55,7 +55,7 @@ public class Login {
 		
 		
 		//----------[MAIN FRAME SETTINGS]----------
-		ImageIcon ui_icon_icon = new ImageIcon("designs/container/ui_icon.png");
+		ImageIcon ui_icon_icon = new ImageIcon("textures/container/ui_icon.png");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(null);
 		frame.setBackground(Color.BLACK);
@@ -93,7 +93,7 @@ public class Login {
 		
 		
 		//----------[DESIGN SETTINGS]----------
-		ImageIcon ui_home_design_icon = new ImageIcon("designs/used/login_login_design.png"); //background image
+		ImageIcon ui_home_design_icon = new ImageIcon("textures/used/login_login_design.png"); //background image
 		labels[0].setIcon(ui_home_design_icon);
 		
 		

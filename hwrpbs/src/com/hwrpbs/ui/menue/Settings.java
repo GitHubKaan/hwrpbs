@@ -1,4 +1,4 @@
-package com.hwrps.ui;
+package com.hwrpbs.ui.menue;
 
 import java.awt.BorderLayout;
 
@@ -15,7 +15,7 @@ static String stbl = "[STABLE] ";
 	
 	public Settings() {
 		
-		System.out.println(stbl + com.hwrps.ui.Settings.class + " startet");
+		System.out.println(stbl + com.hwrpbs.ui.menue.Settings.class + " startet");
 		
 		
 		//----------[INITIALISIERUNG]----------
@@ -29,7 +29,7 @@ static String stbl = "[STABLE] ";
 		setVisible(false);
 		setLayout(new BorderLayout(0, 0));
 		
-		ImageIcon ui_settings_design_icon = new ImageIcon("designs/used/ui_settings_design.png");
+		ImageIcon ui_settings_design_icon = new ImageIcon("textures/used/ui_settings_design.png");
 		labels[0].setIcon(ui_settings_design_icon);
 		add(labels[0]);
 	}

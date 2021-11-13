@@ -1,9 +1,9 @@
-package com.hwrps.main;
+package com.hwrpbs.main;
 
-import com.hwrps.login.Login;
+import com.hwrpbs.ui.login.Login;
 
 
-public class Terminal {
+public class Main {
 
 	static String stbl = "[STABLE] ";
 	
@@ -13,7 +13,7 @@ public class Terminal {
 	public static void main(String[] args) {
 		
 		//main klasse, hier wird alles verarbeitet
-		System.out.println(stbl + com.hwrps.main.Terminal.class + " startet");
+		System.out.println(stbl + com.hwrpbs.main.Main.class + " startet");
 		
 		login_class = new Login(); //login frame klasse starten
 		login_class.getFrame().setVisible(true); //login frame visible machen von login klasse

@@ -1,4 +1,4 @@
-package com.hwrps.ui;
+package com.hwrpbs.ui.menue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.hwrps.login.Login;
+import com.hwrpbs.ui.login.Login;
 
 public class Home {
 	
@@ -45,7 +45,7 @@ public class Home {
 	//user window ist die perspektive aus dem der "normale" user das programm sieht (mobile version)
 	public Home() {
 		
-		System.out.println(stbl + com.hwrps.ui.Home.class + " startet");
+		System.out.println(stbl + com.hwrpbs.ui.menue.Home.class + " startet");
 		
 		//----------[INITIALISIERUNG]----------
 		for (int i = 0; i < buttons.length; i++) {
@@ -103,7 +103,7 @@ public class Home {
 		
 		
 		//----------[DESIGN SETTINGS]----------
-		ImageIcon ui_home_design_icon = new ImageIcon("designs/used/ui_home_design.png"); //background image
+		ImageIcon ui_home_design_icon = new ImageIcon("textures/used/ui_home_design.png"); //background image
 		labels[0].setIcon(ui_home_design_icon);
 		
 		
@@ -132,7 +132,7 @@ public class Home {
 		
 		//----------[MAIN FRAME SETTINGS]----------
 		JFrame frame = new JFrame();
-		ImageIcon ui_icon_icon = new ImageIcon("designs/container/ui_icon.png");
+		ImageIcon ui_icon_icon = new ImageIcon("textures/container/ui_icon.png");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(null);
 		frame.setBackground(Color.BLACK);
