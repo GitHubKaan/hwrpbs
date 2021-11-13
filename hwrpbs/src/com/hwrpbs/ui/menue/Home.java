@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 import com.hwrpbs.ui.login.Login;
 
-public class Home {
+public class Home implements ActionListener { //implementierung vom action listener
 	
 	static String stbl = "[STABLE] ";
 	static String err = "[ERROR] ";
@@ -26,26 +26,31 @@ public class Home {
 	static String act = "[ACTION] ";
 	static String log = "[LOG] ";
 	
-	
-	static int total_tokens = 5;
+	static int total_tokens = 0;
 	static int window_status = 0; //0 = frame ist unsichtbar, 1 = frame ist sichtbar
 	
 	
-	Login login_methods = new Login(); //klassen mehtoden importieren
-	Help help_methods = new Help();
-	Shop shop_methods = new Shop();
-	Transactions transactions_methods = new Transactions();
-	Settings settings_methods = new Settings();
+	Login login_class = new Login(); //klassen importieren
+	Help help_class = new Help();
+	Transactions transactions_class = new Transactions();
+	Settings settings_class = new Settings();
+	Shop shop_class = new Shop();
 	
-	JButton[] buttons = new JButton[4]; //gui arrays
-	JPanel[] panels = new JPanel[7];
-	JLabel[] labels = new JLabel[3];
+	JFrame frame = new JFrame();
+	JButton[] buttons = new JButton[100]; //gui arrays
+	JPanel[] panels = new JPanel[100];
+	JLabel[] labels = new JLabel[100];
+	
 	
 	
 	//user window ist die perspektive aus dem der "normale" user das programm sieht (mobile version)
 	public Home() {
 		
 		System.out.println(stbl + com.hwrpbs.ui.menue.Home.class + " startet");
+		
+		
+	
+		
 		
 		//----------[INITIALISIERUNG]----------
 		for (int i = 0; i < buttons.length; i++) {
@@ -59,13 +64,14 @@ public class Home {
 		}
 		
 		
-		
-		//panel 0 / label 0 - hintergrundsebene
-		//panel 1 / button 0 - einstellungen
-		//panel 2 / label 1 - token anzeige
-		//panel 3 / button 1 - transaktionen
-		//panel 4 / button 2 - token shop
-		//panel 5 / button 3 - help panel
+		/*
+		panel 0 / label 0 - hintergrundsebene
+		panel 1 / button 0 - einstellungen
+		panel 2 / label 1 - token anzeige
+		panel 3 / button 1 - transaktionen
+		panel 4 / button 2 - token shop
+		panel 5 / button 3 - help panel
+		*/
 		
 		//----------[PANEL SETTINGS]----------
 		panels[0].setBounds(0, 0, 385, 762); //panel positionierung
@@ -131,7 +137,6 @@ public class Home {
 		
 		
 		//----------[MAIN FRAME SETTINGS]----------
-		JFrame frame = new JFrame();
 		ImageIcon ui_icon_icon = new ImageIcon("textures/container/ui_icon.png");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(null);
@@ -139,78 +144,98 @@ public class Home {
 		frame.setSize(400, 800);
 		frame.setResizable(false);
 		frame.setTitle("mobile > ui.interface.a1");
-		frame.setLocation(login_methods.getLocation()); //importiert die location (point) des login fensters
+		frame.setLocation(login_class.getLocation()); //importiert die location (point) des login fensters
 		frame.setIconImage(ui_icon_icon.getImage());
 		
 		
 		
 	    //----------[UI KLASSEN MANAGER]----------
-		frame.add(help_methods);
-		frame.add(shop_methods);
-		frame.add(transactions_methods);
-		frame.add(settings_methods);
+		frame.add(help_class);
+		frame.add(shop_class);
+		frame.add(transactions_class);
+		frame.add(settings_class);
 		
 	    
 	    
 		//----------[FRAME STRUCTURE]----------
-		for (int i = 0; i < panels.length; i++) { //hintergrundsebene panel (1-6)
+		for (int i = 0; i < panels.length; i++) { //panel struktur (1-6)
 			frame.add(panels[i]);
 		}
-	    frame.add(panels[0]);
+	    frame.add(panels[0]); //hintergrundsebene panel (0)
 	    
 	    
 	    
-	    //----------[ACTION LISTENER]----------
-	    buttons[0].addActionListener(new ActionListener() { //settings listener
+	    //----------[BUTTON ACTION LISTENER]----------
+	    for (int i = 0; i < buttons.length; i++) { //alle buttons dem actionlistener zuordneen
+	    	buttons[i].addActionListener(this);
+	    }
+
+	    
+	    //----------[ANDERE KLASSEN ACTION LISTENER]----------
+		shop_class.buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(stbl + act + "settings button");
-				
-				settings_methods.setVisible(true);
-				home_close();
+				System.out.println(stbl + act + "zurück button");
+				shop_class.setVisible(false);
+				home_open();
 			}
 		});
-	    
-	    buttons[1].addActionListener(new ActionListener() { //transactions listener
+		transactions_class.buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(stbl + act + "transactions button");
-				
-				transactions_methods.setVisible(true);
-				home_close();
+				System.out.println(stbl + act + "zurück button");
+				transactions_class.setVisible(false);
+				home_open();
 			}
 		});
-	    
-	    buttons[2].addActionListener(new ActionListener() { //shop listener
+		settings_class.buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(stbl + act + "shop button");
-				
-				shop_methods.setVisible(true);
-				home_close();
+				System.out.println(stbl + act + "zurück button");
+				settings_class.setVisible(false);
+				home_open();
 			}
 		});
-	    
-	    buttons[3].addActionListener(new ActionListener() { //help listener
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(stbl + act + "help button");
-				
-				help_methods.setVisible(true);
-				home_close();
-			}
-		});
-	    
-	    
-	    
+		
+		
+		
 		frame.setVisible(true);
 	}
 	
 	
 	
+    public void actionPerformed(ActionEvent e) { //button action listener | else if damit nicht mherere buttons aufeinmal gedrückt werden können
+    	if (e.getSource() == buttons[0]) { //settings listener
+    		System.out.println(stbl + act + "settings button");
+			
+			settings_class.setVisible(true);
+    	} else if (e.getSource() == buttons[1]) { //transactions listener
+    		System.out.println(stbl + act + "transactions button");
+			
+			transactions_class.setVisible(true);
+    	} else if (e.getSource() == buttons[2]) { //shop listener
+    		System.out.println(stbl + act + "shop button");
+			
+			shop_class.setVisible(true);
+		} else if (e.getSource() == buttons[3]) { //help listener
+			System.out.println(stbl + act + "help button");
+			
+			help_class.setVisible(true);
+		}
+    	home_close(); //nach action event alle buttons weg
+    }
+	
+    
 	private void home_close() { //um die buttons der homeseite zu deaktivieren bei öffnen einer anderen seite
 		for (int i = 0; i < buttons.length; i++) { //geht alle buttons durch
-			buttons[i].setVisible(false);
+			buttons[i].setEnabled(false);
+		}
+	}
+	
+	
+	public void home_open() { //um die buttons wieder zu aktiveiren
+		for (int i = 0; i < buttons.length; i++) { //geht alle buttons durch
+			buttons[i].setEnabled(true);
 		}
 	}
 }

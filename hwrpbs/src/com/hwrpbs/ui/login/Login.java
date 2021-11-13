@@ -28,13 +28,13 @@ public class Login {
 	
 	static Point loc;
 	
-	Main terminal_methods = new Main(); //klassen methoden importieren
-	Home user_class; //klassen abrufen
+	Main terminal_methods = new Main(); //klassen importieren
+	Home home_class; //klassen methoden abrufen
 	
 	JFrame frame = new JFrame();
-	JPanel[] panels = new JPanel[3];
-	JLabel[] labels = new JLabel[1];
-	JButton[] buttons = new JButton[1];
+	JPanel[] panels = new JPanel[100];
+	JLabel[] labels = new JLabel[100];
+	JButton[] buttons = new JButton[100];
 	
 	
 	public Login() {
@@ -62,7 +62,7 @@ public class Login {
 		frame.setSize(400, 800);
 		frame.setResizable(false);
 		frame.setTitle("mobile > ui.interface.a0");
-		frame.setLocationRelativeTo(null);
+		frame.setLocation(-450, 100);
 		frame.setIconImage(ui_icon_icon.getImage());
 		
 		
@@ -115,7 +115,7 @@ public class Login {
 				
 				frame.setVisible(false); //login fenster schlieﬂen
 
-				user_class = new Home(); //startet home fenster klasse
+				home_class = new Home(); //startet home fenster klasse
 			}
 		});
 	    

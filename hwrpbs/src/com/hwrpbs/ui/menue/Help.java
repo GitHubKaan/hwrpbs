@@ -12,7 +12,7 @@ public class Help extends JPanel { //das ist die hilfe seite
 	static String stbl = "[STABLE] ";
 	
 	
-	JLabel[] labels = new JLabel[1];
+	JLabel[] labels = new JLabel[100];
 	
 	
 	public Help() {
